@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merlion Spaceways</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=DM+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+    }
+    .tab-buttons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #ff005e 0%, #8f00ff 40%, #00cfff 80%, #ff8ad2 100%);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+      z-index: 1000;
+      box-shadow: 0 4px 32px #ff00cc44, 0 1.5px 0 #fff2 inset;
+      border-bottom: 2px solid #ff8ad2;
+    }
+    .tab-buttons button {
+      background: linear-gradient(135deg, #1a0033 60%, #2e003e 100%);
+      color: #fff;
+      border: 2px solid #ff8ad2;
+      padding: 0.85rem 2.2rem;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', 'DM Sans', 'Arial', sans-serif;
+      letter-spacing: 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #ff00cc33, 0 0.5px 0 #fff2 inset;
+      transition: background 0.3s, color 0.3s, border 0.3s, box-shadow 0.3s, transform 0.2s;
+      text-shadow: 0 0 8px #ff8ad2, 0 0 2px #00cfff;
+      margin-bottom: 0.2rem;
+    }
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background: linear-gradient(90deg, #ff005e 0%, #8f00ff 60%, #00cfff 100%);
+      color: #fff;
+      border: 2.5px solid #00cfff;
+      box-shadow: 0 0 24px #00cfff99, 0 0 8px #ff8ad2cc;
+      transform: scale(1.07);
+      text-shadow: 0 0 16px #ff8ad2, 0 0 8px #00cfff;
+    }
+    header {
+      background-color: rgba(0, 0, 50, 0.6);
+      text-align: center;
+      padding: 8rem 2rem 4rem 2rem; /* Increased top padding to clear tab bar */
+      margin-top: 0;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #9abfff;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 1rem;
+      margin-top: -2.5rem; /* Pull logo up slightly for balance */
+      box-shadow: 0 0 24px #8f00ff55, 0 0 4px #ff8ad244;
+      background: rgba(26,0,51,0.7);
+      border-radius: 50%;
+      padding: 0.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    .tabs {
+      max-width: 1000px;
+      margin: 8rem auto 4rem;
+      padding: 0 2rem;
+      background: linear-gradient(120deg, #1a0033 0%, #2e003e 60%, #0f0c29 100%);
+      border-radius: 18px;
+      box-shadow: 0 0 32px #8f00ff55, 0 0 8px #ff8ad244;
+      border: 2px solid #00cfff;
+    }
+    .tab-content {
+      display: none;
+      color: #fff;
+      font-family: 'DM Sans', 'Orbitron', Arial, sans-serif;
+      letter-spacing: 1.2px;
+      padding-top: 1.5rem;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeInTab 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+    }
+    .card h3 {
+      color: #ff8ad2;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(26, 0, 51, 0.9);
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab-buttons">
+    <button class="active" onclick="showTab('about')">About Us</button>
+    <button onclick="showTab('products')">Product Offerings</button>
+    <button onclick="showTab('pricing')">Pricing Plans</button>
+    <button onclick="showTab('careers')">Careers</button>
+    <button onclick="showTab('testimonials')">Testimonials</button>
+    <button onclick="showTab('team')">Our Team</button>
+  </div>
+
+  <header>
+    <img src="Logo.png" alt="Merlion Spaceways Logo" class="logo">
+    <h1>MERLION SPACEWAYS</h1>
+    <p>Reach for the Stars</p>
+    <img src="hero.png" alt="Space Hero" style="width:100%;max-width:700px;border-radius:16px;margin:2rem auto 0 auto;box-shadow:0 0 32px #8f00ff77;display:block;">
+  </header>
+
+  <div class="tabs">
+    <div id="about" class="tab-content active">
+      <h2>About Merlion Spaceways</h2>
+      <img src="Spacetourism.png" alt="Space Tourism" style="display:block;margin:2rem auto;max-width:400px;width:100%;border-radius:12px;box-shadow:0 0 16px #ff8ad288;">
+      <p>Merlion Spaceways is Southeast Asia’s first suborbital space tourism venture. Based in Singapore, we bring the edge of space within reach—combining luxury, technology, and visionary adventure.</p>
+    </div>
+
+    <div id="products" class="tab-content">
+      <h2>Our Experiences</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Suborbital Rocket Flights</h3>
+          <p>Experience space at 100km altitude in cutting-edge reusable rockets.</p>
+        </div>
+        <div class="card">
+          <h3>Luxury Balloon Rides</h3>
+          <p>Ascend to 30km with breathtaking views in a pressurized capsule.</p>
+        </div>
+        <div class="card">
+          <h3>Zero-G Flights</h3>
+          <p>Fly parabolic arcs to float freely like astronauts in space.</p>
+        </div>
+        <div class="card">
+          <h3>Training Programs</h3>
+          <p>Simulators, G-force, and expert briefings to prepare you for space.</p>
+        </div>
+        <div class="card">
+          <h3>Payload & Research</h3>
+          <p>Launch your experiments or commercial tech on our missions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="pricing" class="tab-content">
+      <h2>Pricing Packages</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Explorer Package</h3>
+          <p>Balloon + Camp | Est. $125,000</p>
+        </div>
+        <div class="card">
+          <h3>Astronaut Package</h3>
+          <p>Zero-G + Suborbital | Est. $450,000</p>
+        </div>
+        <div class="card">
+          <h3>Elite Pioneer</h3>
+          <p>VIP experience w/ concierge | Est. $600,000+</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="careers" class="tab-content">
+      <h2>Careers</h2>
+      <p>Join Merlion Spaceways to shape the future of tourism. We’re hiring engineers, hospitality experts, aerospace technicians, and marketers.</p>
+    </div>
+
+    <div id="testimonials" class="tab-content">
+      <h2>Testimonials</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Dr. Maya L.</h3>
+          <p>“The view of Earth took my breath away. The crew made it seamless.”</p>
+        </div>
+        <div class="card">
+          <h3>Alex W.</h3>
+          <p>“Truly the luxury space adventure I always dreamed of.”</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="team" class="tab-content">
+      <h2>Our Team</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Amira Tan</h3>
+          <p>CEO & Visionary</p>
+        </div>
+        <div class="card">
+          <h3>Jasper Koh</h3>
+          <p>Flight Director</p>
+        </div>
+        <div class="card">
+          <h3>Elena Rao</h3>
+          <p>Chief Engineer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Merlion Spaceways — Designed to go beyond.
+  </footer>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
